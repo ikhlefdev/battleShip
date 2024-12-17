@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BattleShip</title>
+    <style>
+    .board {
+  display: grid;
+  grid-template-columns: repeat(10, 40px);
+  gap: 2px;
+  background-color: #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 20px;
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border: 1px solid #999;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.ship {
+  background-color: #4a90e2;
+}
+
+.hit {
+  background-color: #e74c3c;
+}
+
+.miss {
+  background-color: #95a5a6;
+}
+
+.game-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.player-board {
+  text-align: center;
+}
+
+h2 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.current-turn {
+  text-align: center;
+  font-size: 1.2em;
+  margin-top: 20px;
+  color: #2c3e50;
+}
+</style>
+</head>
+<body>
+    <div class="game-container">
+
+
+
+        <div class="player-board">
+            <h2>Player 1's Board</h2>
+            <div id="player1-board" class="board"></div>
+        </div>
+        <div class="player-board">
+            <h2>Player 2's Board</h2>
+            <div id="player2-board" class="board"></div>
+        </div>
+    </div>
+
+
+    
+    <div id="current-turn" class="current-turn"></div>
+<script type="module" src="index.js"></script>
+</body>
+</html>

@@ -34,4 +34,10 @@ module.exports = {
     },
     ],
     },
+    resolve: {
+        fallback: {
+          path: require.resolve('path-browserify'),
+          fs: false, // No browser alternative for fs
+        }
+      }
     };
