@@ -1,12 +1,18 @@
+import { GameController } from "./gameController";
 export class UImanager {
   constructor() {
     this.player1Board = document.getElementById("player1-board");
     this.player2Board = document.getElementById("player2-board");
     this.turnDisplay = document.getElementById("current-turn");
+    this.randomize=document.getElementById('randomize')
+    this.chooseShips=document.getElementById('placeShips')
+    this.reset=document.getElementById('reset')
   }
   initBoards() {
     this.createBoard(this.player1Board, "player1");
     this.createBoard(this.player2Board, "player2");
+    this.randomize.style.display='inline'
+    this.chooseShips.style.display='inline'
   }
   createBoard(boardElement, playerId) {
     boardElement.innerHTML = "";
@@ -36,6 +42,7 @@ export class UImanager {
   }
 
   updateTurnDisplay(playerName) {
+       this.turnDisplay.style.display='block'
        this.turnDisplay.textContent=`It's ${playerName}'s turn`
   }
  
@@ -45,4 +52,11 @@ export class UImanager {
    showGameOver(winner){
        this.turnDisplay.textContent=`${winner} Won!!!`
    }
+   manageButtons(){
+       this.randomize.style.display='none'
+       this.chooseShips.style.display='none'
+       this.reset.style.display='inline'
+   }
+        
+   
 }

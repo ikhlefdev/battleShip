@@ -2,6 +2,7 @@ import { UImanager } from "./UImanager";
 import { Player } from "../factories/player";
 import { Ship } from "../factories/ship";
 import { GameBoard } from "../factories/board";
+import {chooseShips} from './chooseShips'
 
 export class GameController {
   constructor() {
@@ -11,13 +12,26 @@ export class GameController {
     this.currentPlayer = this.player;
     this.gameOver = false;
     this.setEventListeners();
+    this.randomize=document.getElementById('randomize')
+    this.chooseShips=document.getElementById('placeShips')
   }
   initGame() {
     this.uiManager.initBoards();
-    this.placeShipsRandomly(this.player);
-    this.placeShipsRandomly(this.computer);
-    this.displayShips();
-    this.uiManager.updateTurnDisplay(this.currentPlayer.name);
+    this.randomize.addEventListener('click',()=>{
+        this.placeShipsRandomly(this.player);
+        this.placeShipsRandomly(this.computer);
+        this.displayShips();
+        this.uiManager.updateTurnDisplay(this.currentPlayer.name);
+        this.uiManager.manageButtons()
+        
+    })
+    this.chooseShips.addEventListener('click',()=>{
+        this.chooseShips()
+        this.uiManager.manageButtons()
+    })
+   
+    
+    
   }
   
   setEventListeners() {
@@ -33,7 +47,7 @@ export class GameController {
         }
 
     })
-
+    
   }
   handlePlayerMove(x,y){
     if(this.currentPlayer===this.player){
