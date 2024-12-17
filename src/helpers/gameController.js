@@ -44,9 +44,15 @@ export class GameController {
             this.endGame(this.player)
             return 
         }
-        this.currentPlayer=this.computer
-        this.uiManager.updateTurnDisplay(this.currentPlayer.name)
-        setTimeout(() => this.computerMove(), 1000);
+        if(!isHit){
+            this.currentPlayer=this.computer
+            this.uiManager.updateTurnDisplay(this.currentPlayer.name)
+            setTimeout(() => this.computerMove(), 1000);
+        }
+        else{
+            this.setEventListeners()
+        }
+        
       }
       catch(error){
            console.log(error)
@@ -62,9 +68,14 @@ export class GameController {
         this.endGame(this.computer)
         return
     }
+    if(!isHit){
     this.currentPlayer=this.player
     this.uiManager.updateTurnDisplay(this.currentPlayer.name)
   }
+  else{
+    setTimeout(() => this.computerMove(), 1000);
+  }
+}
 
 
 
